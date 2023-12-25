@@ -1,3 +1,29 @@
+# resonite-alternative-api
+
+It is an API compatible with api.resonite.com, but it can be called as many times as you like and is fast.
+
+## Development
+
+Running with turborepo and docker-compose.
+
+```sh
+docker compose -f docker-compose.dev.yml up
+```
+
+```sh
+yarn dev
+```
+
+## Production
+
+Running all apps with docker-compose.
+
+```sh
+docker compose up -d
+```
+
+---
+
 # Turborepo Docker starter
 
 This is an official Docker starter Turborepo.

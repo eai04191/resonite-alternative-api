@@ -1,23 +1,16 @@
 {
-    "name": "api",
+    "name": "signalr-client",
     "version": "0.0.0",
     "private": true,
     "type": "module",
     "scripts": {
         "build": "tsc",
-        "clean": "rm -rf dist",
         "dev": "tsx watch ./src/index.ts",
         "lint": "tsc --noEmit && eslint \"src/**/*.ts*\" --max-warnings 0 --fix",
-        "start": "tsx ./src/index.ts",
-        "test": "jest --detectOpenHandles"
-    },
-    "jest": {
-        "preset": "@repo/jest-presets/jest/node"
+        "start": "tsx ./src/index.ts"
     },
     "dependencies": {
-        "@bogeychan/elysia-polyfills": "^0.6.1",
-        "@repo/logger": "*",
-        "elysia": "^0.8.3",
+        "@microsoft/signalr": "^8.0.0",
         "ioredis": "^5.3.2"
     },
     "devDependencies": {
@@ -25,7 +18,7 @@
         "@repo/jest-presets": "*",
         "@repo/typescript-config": "*",
         "@types/node": "^20.10.5",
-        "tsx": "^4.7.0",
+        "tsx": "^4.6.2",
         "typescript": "^5.3.3"
     }
 }

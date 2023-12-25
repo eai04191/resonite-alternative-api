@@ -17,7 +17,7 @@ module.exports = {
     env: {
         node: true,
     },
-    plugins: ["only-warn"],
+    plugins: ["only-warn", "simple-import-sort"],
     settings: {
         "import/resolver": {
             typescript: {
@@ -30,6 +30,10 @@ module.exports = {
         ".*.js",
         "node_modules/",
     ],
+    rules: {
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+    },
     overrides: [
         { files: ["*.js?(x)", "*.ts?(x)"] },
         {

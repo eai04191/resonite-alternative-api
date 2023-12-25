@@ -1,6 +1,12 @@
 version: '3'
 
+# Docker Compose for Production
+
 services:
+  redis:
+    container_name: redis
+    image: redis:7-alpine
+
   api:
     container_name: api
     build:
@@ -9,3 +15,8 @@ services:
     restart: always
     ports:
       - 3001:3001
+  signalr-client:
+    container_name: signalr-client
+    build:
+      context: .
+      dockerfile: ./apps/signalr-client/Dockerfile
