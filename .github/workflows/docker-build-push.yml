@@ -1,0 +1,41 @@
+name: Upload Docker Image to Github Container Registry
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker-build-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # TODO: hash tagging
+      # --tag ghcr.io/$${{ github.repository }}/api:$(echo $GITHUB_SHA | head -c7) \
+      - name: Build Docker Image (API)
+        run: |
+          docker build -f .\apps\api\Dockerfile  \
+          --tag ghcr.io/$${{ github.repository }}/api:latest \
+          .
+
+      - name: Build Docker Image (signalr-client)
+        run: |
+          docker build -f .\apps\signalr-client\Dockerfile  \
+          --tag ghcr.io/$${{ github.repository }}/signalr-client:latest \
+          .
+
+      - name: Push the Docker image to GitHub Container Registry
+        run: |
+          docker push ghcr.io/$${{ github.repository }}/api:latest
+          docker push ghcr.io/$${{ github.repository }}/signalr-client:latest
