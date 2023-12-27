@@ -5,6 +5,7 @@ version: '3'
 services:
   redis:
     container_name: redis
-    image: redis:7-alpine
+    image: redis/redis-stack:7.2.0-v6
     ports:
       - 6379:6379
+      - 8001:8001

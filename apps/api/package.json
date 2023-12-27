@@ -18,7 +18,7 @@
         "@bogeychan/elysia-polyfills": "^0.6.1",
         "@repo/logger": "*",
         "elysia": "^0.8.3",
-        "ioredis": "^5.3.2"
+        "redis": "^4.6.12"
     },
     "devDependencies": {
         "@repo/eslint-config": "*",

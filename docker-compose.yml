@@ -5,18 +5,26 @@ version: '3'
 services:
   redis:
     container_name: redis
-    image: redis:7-alpine
+    image: redis/redis-stack-server:7.2.0-v6
 
   api:
     container_name: api
+    depends_on:
+      - redis
     build:
       context: .
       dockerfile: ./apps/api/Dockerfile
+    environment:
+      - REDIS_HOST=redis
     restart: always
     ports:
-      - 3001:3001
+      - 3001:3000
   signalr-client:
     container_name: signalr-client
+    depends_on:
+      - redis
     build:
       context: .
       dockerfile: ./apps/signalr-client/Dockerfile
+    environment:
+      - REDIS_HOST=redis
