@@ -67,7 +67,9 @@ const app = new Elysia()
             set.headers["Content-Type"] = "application/json; charset=utf-8";
         }
     })
-    .get("/", () => ({ hello: "Node.js👋" }))
+    .get("/", () => ({
+        "see also": "https://github.com/eai04191/resonite-alternative-api",
+    }))
     .get(
         "/sessions",
         async ({ query }) => {
