@@ -26,13 +26,13 @@ jobs:
       - name: Build Docker Image (API)
         run: |
           docker build -f .\apps\api\Dockerfile  \
-          --tag ghcr.io/$${{ github.repository }}/api:latest \
+          --tag ghcr.io/$GITHUB_REPOSITORY/api:latest \
           .
 
       - name: Build Docker Image (signalr-client)
         run: |
           docker build -f .\apps\signalr-client\Dockerfile  \
-          --tag ghcr.io/$${{ github.repository }}/signalr-client:latest \
+          --tag ghcr.io/$GITHUB_REPOSITORY/signalr-client:latest \
           .
 
       - name: Push the Docker image to GitHub Container Registry
