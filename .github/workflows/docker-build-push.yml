@@ -37,5 +37,5 @@ jobs:
 
       - name: Push the Docker image to GitHub Container Registry
         run: |
-          docker push ghcr.io/$${{ github.repository }}/api:latest
-          docker push ghcr.io/$${{ github.repository }}/signalr-client:latest
+          docker push ghcr.io/$GITHUB_REPOSITORY/api:latest
+          docker push ghcr.io/$GITHUB_REPOSITORY/signalr-client:latest
