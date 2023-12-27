@@ -25,13 +25,13 @@ jobs:
       # --tag ghcr.io/$${{ github.repository }}/api:$(echo $GITHUB_SHA | head -c7) \
       - name: Build Docker Image (API)
         run: |
-          docker build -f .\apps\api\Dockerfile  \
+          docker build -f ./apps/api/Dockerfile  \
           --tag ghcr.io/$GITHUB_REPOSITORY/api:latest \
           .
 
       - name: Build Docker Image (signalr-client)
         run: |
-          docker build -f .\apps\signalr-client\Dockerfile  \
+          docker build -f ./apps/signalr-client/Dockerfile  \
           --tag ghcr.io/$GITHUB_REPOSITORY/signalr-client:latest \
           .
 
